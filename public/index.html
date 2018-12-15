@@ -16,6 +16,10 @@
     span {
       display: block
     }
+
+    span.warning {
+      color: red
+    }
   </style>
   <title>Unlink Detector</title>
 </head>
@@ -34,10 +38,14 @@
       console.log('websocket is connected ...')
       ws.send('start scanning')
     }
-    ws.onmessage = function (msgEvent) {
+    ws.onmessage = function (event) {
+      var eventObj = JSON.parse(event.data)
+      console.log(eventObj)
       var updateSpan = document.createElement("span")
-      var updateText = document.createTextNode(msgEvent.data)
+      var updateText = document.createTextNode(eventObj.msg)
       updateSpan.appendChild(updateText)
+      if (eventObj.level === 'ScanEventLevel.WARN')
+        updateSpan.classList.add('warning')
       document.getElementById("status").appendChild(updateSpan)
       updateSpan.scrollIntoView()
     }

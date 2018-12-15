@@ -101,7 +101,7 @@ app.ws('/', function (ws, req) {
     siteChecker.enqueue('https://itdesign.de')
     ws.send(
       JSON.stringify(
-        new ScanEvent('started to scan itdesign.de',
+        new ScanEvent('Started to scan itdesign.de',
           undefined,
           ScanEventLevel.INFO.toString()))
     )

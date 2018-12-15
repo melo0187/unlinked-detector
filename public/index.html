@@ -33,20 +33,29 @@
   </div>
 
   <script>
-    var ws = new WebSocket('ws://localhost:3000');
+    var ws = new WebSocket('ws://localhost:3000')
+
     ws.onopen = function () {
-      console.log('websocket is connected ...')
       ws.send('start scanning')
     }
     ws.onmessage = function (event) {
       var eventObj = JSON.parse(event.data)
-      console.log(eventObj)
+
+      var statusContainer = document.getElementById("status")
+
       var updateSpan = document.createElement("span")
       var updateText = document.createTextNode(eventObj.msg)
       updateSpan.appendChild(updateText)
       if (eventObj.level === 'ScanEventLevel.WARN')
         updateSpan.classList.add('warning')
-      document.getElementById("status").appendChild(updateSpan)
+
+      if (!!eventObj.pageUrl)
+        updateSpan.setAttribute('pageUrl', eventObj.pageUrl)
+
+      if (statusContainer.lastElementChild.getAttribute('pageUrl') !== updateSpan.getAttribute('pageUrl'))
+        statusContainer.appendChild(document.createElement("br"))
+
+      statusContainer.appendChild(updateSpan)
       updateSpan.scrollIntoView()
     }
   </script>

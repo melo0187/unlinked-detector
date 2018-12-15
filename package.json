@@ -1,0 +1,26 @@
+{
+  "name": "unlinked-detector",
+  "version": "0.0.1",
+  "description": "Offers the ability to scan a site for broken links",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --inspect index.js",
+    "test": "echo MISSING TESTS!"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melo0187/unlinked-detector.git"
+  },
+  "author": "Carmelo Scollo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melo0187/unlinked-detector/issues"
+  },
+  "homepage": "https://github.com/melo0187/unlinked-detector#readme",
+  "dependencies": {
+    "broken-link-checker": "^0.7.8",
+    "express": "^4.16.4",
+    "express-ws": "^4.0.0"
+  }
+}

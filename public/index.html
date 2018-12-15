@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    #status {
+      overflow-y: scroll;
+      height: 384px;
+      border: 1px inset black;
+      padding: 0px 16px;
+    }
+
+    span {
+      display: block
+    }
+  </style>
+  <title>Unlink Detector</title>
+</head>
+
+<body>
+  <h1>
+    Does itdesign.de contain broken links?
+  </h1>
+  <div id="status">
+    <span>Connecting to socket...</span>
+  </div>
+
+  <script>
+    var ws = new WebSocket('ws://localhost:3000');
+    ws.onopen = function () {
+      console.log('websocket is connected ...')
+      ws.send('start scanning')
+    }
+    ws.onmessage = function (msgEvent) {
+      var updateSpan = document.createElement("span")
+      var updateText = document.createTextNode(msgEvent.data)
+      updateSpan.appendChild(updateText)
+      document.getElementById("status").appendChild(updateSpan)
+      updateSpan.scrollIntoView()
+    }
+  </script>
+</body>
+
+</html>

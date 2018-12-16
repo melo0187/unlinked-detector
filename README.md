@@ -1,4 +1,4 @@
-# unlinked detector
+# unlinked detector [![Build Status](https://travis-ci.org/melo0187/unlinked-detector.svg?branch=master)](https://travis-ci.org/melo0187/unlinked-detector)
 > Scan your site for broken links from the comfort of your browser
 
 This is a small example node application making use of the following:

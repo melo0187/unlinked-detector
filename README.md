@@ -13,7 +13,7 @@ is initiated and the scan results are send back to the front end to be displayed
 in realtime.
 
 ## Usage
-To run it locally:
+### Run it locally
 ```
 git clone https://github.com/melo0187/unlinked-detector.git
 cd unlinked-detector
@@ -26,6 +26,18 @@ To run in debug (`--inspect`), replace `npm start` with `npm run dev`.
 
 To run tests execute `npm test`.
 
+### Run it in Docker
+Same as above, but instead of the `npm` commands you build an image and run it like so:
+```
+docker build -t melo0187/unlinked-detector .
+docker run -p 8080:8080 -d melo0187/unlinked-detector
+```
+You bind the port *8080* here, because that is what is exposed by default in the Dockerfile.
+However you can run on another port (e.g. *3333*) like so:
+```
+docker run --env PORT=3333 -p 3333:3333 -d melo0187/unlinked-detector
+```
+
 ## Project Structure
 - *lib* - contains our modules (just the blc adapter for now)
 - *public* - contains the front end we serve
@@ -36,7 +48,6 @@ To run tests execute `npm test`.
 
 ## ToDos
 - Demo deployment to Heroku or somethin alike
-- Add `Dockerfile` to be able to run as container
 - Add a counter for the found broken links to the front end
 - Besides the realtime scan status add a summary of the found broken links
 - Figure out reason for false positives (e.g. img ressources from cdn.itdesign.de)

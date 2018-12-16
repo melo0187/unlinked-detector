@@ -47,7 +47,6 @@ docker run --env PORT=3333 -p 3333:3333 -d melo0187/unlinked-detector
 - *package.json* - contains scripts to run, debug and test the app
 
 ## ToDos
-- Demo deployment to Heroku or somethin alike
 - Add a counter for the found broken links to the front end
 - Besides the realtime scan status add a summary of the found broken links
 - Figure out reason for false positives (e.g. img ressources from cdn.itdesign.de)

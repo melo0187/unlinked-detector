@@ -33,7 +33,15 @@
   </div>
 
   <script>
-    var ws = new WebSocket('ws://'+window.location.host)
+    const loc = window.location
+    let wsUri
+    if (loc.protocol === 'https:') {
+      wsUri = 'wss:'
+    } else {
+      wsUri = 'ws:'
+    }
+    wsUri += '//' + loc.host
+    var ws = new WebSocket(wsUri)
 
     ws.onopen = function () {
       ws.send('start scanning')

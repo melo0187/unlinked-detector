@@ -13,6 +13,11 @@ is initiated and the scan results are send back to the front end to be displayed
 in realtime.
 
 ## Usage
+### Demo
+Thanks to [Travis CI](https://travis-ci.org/melo0187/unlinked-detector) the source code in this repo is picked up, tested and deployed to [Heroku](https://www.heroku.com/).
+
+Check out [the demo](https://unlinked-detector.herokuapp.com/).
+
 ### Run it locally
 ```
 git clone https://github.com/melo0187/unlinked-detector.git
@@ -37,6 +42,7 @@ However you can run on another port (e.g. *3333*) like so:
 ```
 docker run --env PORT=3333 -p 3333:3333 -d melo0187/unlinked-detector
 ```
+Once your container is running, visit http://localhost:8080/ (or whatever port you specified)
 
 ## Project Structure
 - *lib* - contains our modules (just the blc adapter for now)

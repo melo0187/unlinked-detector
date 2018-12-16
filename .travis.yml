@@ -1,3 +1,8 @@
 language: node_js
 node_js:
-  - "lts/*"
+- lts/*
+deploy:
+  provider: heroku
+  app: unlinked-detector
+  api_key:
+    secure: H4U9qwFUYC3RAL0sZDXewGDK+HiMpcVYkg+eSwJ10NeQ+1kGffWr5j4MfDUkMdDMucM/ODkBk5AyYfcU2WPwh3MxQ/cpNswmX1pbyx4WHhhnTxkjPDnfIlq4nZ02MFJmGACiObD2zAq26al5LLvH4xurdDPUpWpIcqGIRYv711S9SUptEsBAfUFs2AutbnqootFGc+RnvVEm/SmhpZvK21ZKIIi/BqibwuXkmEMW6BdUYYH8TBP1x3aag5ggGEgsciacDajpxnyZ6keKq0NG7KCUUderUoMAu7sNRVstsM31W9Jpr70sE+2THMaBsI6wAGZYKDZuuF+vVb/VcPahZ0xs8rCYSiP+b6AsiElP+L1EG4ZlY8SRb6IgtTG+rPjzp9kp0F1yAb1323gTKA3nddovqt83iVn/YHC5CcZx0GXMqVgu8K/lt10u1Qj5sKI5scSHYT7rJaLrGGeKxSBrUvXHvnJ1TQc28z7aAefB3rZjLr1ZLBSYRBPI+gW7nEjdHfm4rnEuoH2nr3RHNXd6muXlBR6YTn0Qwm7VsGgQdHTVQNOHUb70kchjFNe53tNhCfjzFU7DVDbB2PNxJAGVkR2DqXYsY8BgTiycUd/+bSw7W33W6u2vKnxOJM6XWFit81U+ej19u6pdfiHE7J32jKZDL5ev1imy0xchpe2KZX0=

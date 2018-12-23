@@ -5,22 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <style>
-    #status {
-      overflow-y: scroll;
-      height: 384px;
-      border: 1px inset black;
-      padding: 0px 16px;
-    }
-
-    span {
-      display: block
-    }
-
-    span.warning {
-      color: red
-    }
-  </style>
+  <link rel="stylesheet" href="css/main.css">
   <title>Unlink Detector</title>
 </head>
 
@@ -32,41 +17,7 @@
     <span>Connecting to socket...</span>
   </div>
 
-  <script>
-    const loc = window.location
-    let wsUri
-    if (loc.protocol === 'https:') {
-      wsUri = 'wss:'
-    } else {
-      wsUri = 'ws:'
-    }
-    wsUri += '//' + loc.host
-    var ws = new WebSocket(wsUri)
-
-    ws.onopen = function () {
-      ws.send('start scanning')
-    }
-    ws.onmessage = function (event) {
-      var eventObj = JSON.parse(event.data)
-
-      var statusContainer = document.getElementById("status")
-
-      var updateSpan = document.createElement("span")
-      var updateText = document.createTextNode(eventObj.msg)
-      updateSpan.appendChild(updateText)
-      if (eventObj.level === 'ScanEventLevel.WARN')
-        updateSpan.classList.add('warning')
-
-      if (!!eventObj.pageUrl)
-        updateSpan.setAttribute('pageUrl', eventObj.pageUrl)
-
-      if (statusContainer.lastElementChild.getAttribute('pageUrl') !== updateSpan.getAttribute('pageUrl'))
-        statusContainer.appendChild(document.createElement("br"))
-
-      statusContainer.appendChild(updateSpan)
-      updateSpan.scrollIntoView()
-    }
-  </script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>

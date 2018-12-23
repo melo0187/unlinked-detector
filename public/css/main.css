@@ -1,0 +1,14 @@
+#status {
+  overflow-y: scroll;
+  height: 384px;
+  border: 1px inset black;
+  padding: 0px 16px;
+}
+
+span {
+  display: block
+}
+
+span.warning {
+  color: red
+}

@@ -6,6 +6,8 @@ const app = function () {
   const Scanner = require('./lib/Scanner')
   const scanner = new Scanner()
 
+  app.use(express.static('public'))
+
   // Setup app's root path
   app.get('/', function (req, res, next) {
     console.log('requested index -> serving index.html connecting to ws')

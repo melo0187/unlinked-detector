@@ -1,5 +1,5 @@
 # Avoid "moving target" image by omitting tag or using "latest" and define a tag instead
-FROM node:8
+FROM node:10-alpine
 
 # Create app directory
 WORKDIR /home/node/app
@@ -9,11 +9,14 @@ WORKDIR /home/node/app
 # where available (npm@5+)
 COPY package*.json ./
 
-# building code for production
-RUN npm install --only=production
+# installing dependencies
+RUN npm install
 
 # Bundle app source
 COPY . .
+
+# building code
+RUN npm run build
 
 # Define env var PORT with default (which can be overriten when starting the container)
 ENV PORT=8080

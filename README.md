@@ -5,12 +5,15 @@ This is a small example node application making use of the following:
 - [express](https://www.npmjs.com/package/express) for routing
 - [express-ws](https://www.npmjs.com/package/express-ws) for WebSockets
 - [broken-link-checker](https://www.npmjs.com/package/broken-link-checker) for performing the actual scan
-- [jasmine](https://www.npmjs.com/package/jasmine) for running tests
+- [Jest](https://www.npmjs.com/package/jest) and [SuperTest](https://www.npmjs.com/package/supertest) for testing
 
 For now all it can do is serve a minimalistic front end that will establish a
 WebSocket connection to the server. Once the connection is established, the scan
 is initiated and the scan results are send back to the front end to be displayed
 in realtime.
+
+On the Node.js back end it makes use of [TypeScript](https://www.typescriptlang.org/).
+The front end is very basic and potentially my next area of experimentation.
 
 ## Usage
 ### Demo
@@ -23,11 +26,12 @@ Check out [the demo](https://unlinked-detector.herokuapp.com/).
 git clone https://github.com/melo0187/unlinked-detector.git
 cd unlinked-detector
 npm install
+npm run build
 npm start
 ```
 Once running, visit http://localhost:3000/
 
-To run in debug (`--inspect`), replace `npm start` with `npm run dev`.
+To run in debug (`--inspect`), replace `npm start` with `npm run serve-debug`.
 
 To run tests execute `npm test`.
 
@@ -45,16 +49,25 @@ docker run --env PORT=3333 -p 3333:3333 -d melo0187/unlinked-detector
 Once your container is running, visit http://localhost:8080/ (or whatever port you specified)
 
 ## Project Structure
-- *lib* - contains our modules (just the blc adapter for now)
-- *public* - contains the front end we serve
-- *spec* - contains tests as jasmine specs
-- *app.js* - contains the set up for our express application
-- *index.js* - starts our express app (allowing to inject port through env)
-- *package.json* - contains scripts to run, debug and test the app
+- *src* - contains all app related source code
+- *src/types* - contains types for used modules missing an @types package
+- *src/public* - contains the front end we serve
+- *src/test* - contains tests using Jest and/or SuperTest
+- *src/app.ts* - contains the set up for our express application
+- *src/server.ts* - starts our express app (allowing to inject port through env)
+- *copyStaticAssets.ts* - copies front end assets into *dist* folder
+- *package.json* - contains scripts to build, test, run, and debug the app
 
 ## ToDos
+### Functional
 - Add a counter for the found broken links to the front end
 - Besides the realtime scan status add a summary of the found broken links
 - Figure out reason for false positives (e.g. img ressources from cdn.itdesign.de)
-- Add more tests, like a spec for the front end
 - Allow user to provide siteUrl to be checked
+
+### Non-Functional
+- Make use of TypeScript in the front end, too
+- Implement the front end with React
+- Use Webpack for bundling front end modules
+- Try Sass for styling the front end
+- Tyy Docker multi-stage build

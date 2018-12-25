@@ -19,7 +19,7 @@ ws.onmessage = function (event) {
   var updateSpan = document.createElement("span")
   var updateText = document.createTextNode(eventObj.msg)
   updateSpan.appendChild(updateText)
-  if (eventObj.level === 'ScanEventLevel.WARN')
+  if (eventObj.level === 'WARN')
     updateSpan.classList.add('warning')
 
   if (!!eventObj.pageUrl)

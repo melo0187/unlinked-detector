@@ -70,4 +70,4 @@ Once your container is running, visit http://localhost:8080/ (or whatever port y
 - Implement the front end with React
 - Use Webpack for bundling front end modules
 - Try Sass for styling the front end
-- Tyy Docker multi-stage build
+- Try Docker multi-stage build

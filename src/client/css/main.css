@@ -5,10 +5,10 @@
   padding: 0px 16px;
 }
 
-span {
+#status span {
   display: block
 }
 
-span.warning {
+#status span.warning {
   color: red
 }

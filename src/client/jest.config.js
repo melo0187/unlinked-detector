@@ -1,17 +1,15 @@
 module.exports = {
   "roots": [
-    "<rootDir>/src"
+    "<rootDir>"
   ],
+  "setupTestFrameworkScriptFile": "<rootDir>/setupEnzyme.ts",
   "transform": {
     "^.+\\.tsx?$": "ts-jest"
   },
-  "testRegex": "(/test/.*(test|spec))\\.tsx?$",
+  "testRegex": "((\\.|/)(test|spec))\\.tsx?$",
   "moduleFileExtensions": [
     "ts",
     "tsx",
-    "js",
-    "jsx",
-    "json",
-    "node"
+    "js"
   ],
 }

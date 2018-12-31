@@ -7,10 +7,14 @@
     "start": "npm run serve",
     "serve": "node dist/server.js",
     "serve-debug": "node --inspect dist/server.js",
-    "test": "jest --coverage --verbose --forceExit",
-    "build": "npm run build-ts && npm run tslint && npm run copy-static-assets",
-    "build-ts": "tsc",
-    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "test": "npm run test-server && npm run test-client",
+    "test-server": "jest --coverage --verbose --forceExit",
+    "test-client": "jest -c src/client/jest.config.js --coverage --verbose",
+    "build": "npm run tslint-server && npm run build-server && npm run tslint-client && npm run build-client && npm run copy-static-assets",
+    "build-server": "tsc",
+    "build-client": "webpack --config src/client/webpack.config.js",
+    "tslint-server": "tslint -c tslint.json -p tsconfig.json",
+    "tslint-client": "tslint -c tslint.json -p src/client/tsconfig.json",
     "copy-static-assets": "ts-node copyStaticAssets.ts"
   },
   "repository": {
@@ -29,18 +33,31 @@
     "express-ws": "^4.0.0"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.15",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/express": "^4.16.0",
     "@types/express-ws": "^3.0.0",
     "@types/jest": "^23.3.10",
+    "@types/react": "^16.7.18",
+    "@types/react-dom": "^16.0.11",
     "@types/shelljs": "^0.8.1",
     "@types/supertest": "^2.0.7",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "jest": "^23.6.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-test-renderer": "^16.7.0",
     "shelljs": "^0.8.3",
+    "source-map-loader": "^0.2.4",
     "supertest": "^3.3.0",
     "ts-jest": "^23.10.5",
+    "ts-loader": "^5.3.2",
     "ts-node": "^7.0.1",
     "tslint": "^5.12.0",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.2"
   },
   "engines": {
     "node": "10.x"

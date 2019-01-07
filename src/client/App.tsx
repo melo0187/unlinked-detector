@@ -1,6 +1,7 @@
 import * as React from "react";
 
 import Status from "./components/Status/Status";
+import Summary from "./components/Summary/Summary";
 
 interface IState {
   currentLog: Array<{ msg: string, level: string, pageUrl?: string }>;
@@ -22,7 +23,7 @@ class App extends React.Component<{}, IState> {
     wsUri += "//" + this.loc.host;
 
     this.state = {
-      currentLog: [{msg: "Connecting to socket...", level: "INFO"}],
+      currentLog: [{ msg: "Connecting to socket...", level: "INFO" }],
       socket: new WebSocket(wsUri),
     };
 
@@ -43,6 +44,7 @@ class App extends React.Component<{}, IState> {
           Does itdesign.de contain broken links?
         </h1>
         <Status scanLog={this.state.currentLog} />
+        <Summary brokenCount={this.state.currentLog.filter((entry) => entry.level === "WARN").length} />
       </div>
     );
   }

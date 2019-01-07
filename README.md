@@ -60,7 +60,6 @@ Once your container is running, visit http://localhost:8080/ (or whatever port y
 
 ## Further areas of experimentation
 ### Functional
-- Add a counter for the found broken links to the front end
 - Besides the realtime scan status add a summary of the found broken links
 - Figure out reason for false positives (e.g. img ressources from cdn.itdesign.de)
 - Allow user to provide siteUrl to be checked

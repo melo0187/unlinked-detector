@@ -1,9 +1,8 @@
 language: node_js
 node_js:
   - 10
-script:
+before_deploy:
   - npm run build
-  - npm test
 deploy:
   provider: heroku
   app: unlinked-detector

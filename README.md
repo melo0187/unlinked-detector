@@ -48,6 +48,15 @@ docker run --env PORT=3333 -p 3333:3333 -d melo0187/unlinked-detector
 ```
 Once your container is running, visit http://localhost:8080/ (or whatever port you specified)
 
+### Development
+```
+npm run dev
+```
+This will concurrently start three watch tasks for WebPack, TypeScript and Node (with `--inspect`).
+Whenever you change source files they will be recompiled, which triggers a browser reload through the use of [browser-sync](https://www.browsersync.io/).
+
+Whenever you commit a pre-commit hook will lint and test everything.
+
 ## Project Structure
 - *src* - contains all app related source code
 - *src/types* - contains types for used modules missing an @types package

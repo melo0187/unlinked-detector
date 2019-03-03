@@ -18,6 +18,7 @@
     "build": "npm run build-server && npm run build-client && npm run copy-static-assets",
     "build-server": "tsc",
     "build-client": "webpack --config src/client/webpack.config.js",
+    "heroku-postbuild": "echo Skip builds on Heroku",
     "tslint-server": "tslint -c tslint.json -p tsconfig.json",
     "tslint-client": "tslint -c tslint.json -p src/client/tsconfig.json",
     "copy-static-assets": "ts-node copyStaticAssets.ts"
